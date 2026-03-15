@@ -1,0 +1,148 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx, setspace}
+
+\usepackage[
+top = 1.25cm, 
+bottom = 2.0cm]{geometry}
+
+\begin{document}
+\begin{titlepage} 
+	\centering
+    % HEADER
+	{
+        \scshape
+        Федеральное государственное автономное образовательное учреждение высшего образования
+        \par
+        \textbf{«Научно-образовательная корпорация ИТМО»}
+        \par
+        \vspace*{1cm}
+        Факультет Программной Инженерии и Компьютерной Техники
+        \par
+    }
+    % LOGO
+    \vspace*{0.6cm}
+    \includegraphics[width=\textwidth]{logo.png}
+    % LAB INFO
+    {
+        \Large
+        \textbf{Домашняя работа №1 по предмету\\<<Компьютерные сети>>}
+        \par
+        \normalsize
+        \vspace*{0.75cm}
+        \textbf{Вариант САА}
+        \par
+    }
+    \vfill
+    % СREDITS
+    \hfill\begin{minipage}{\dimexpr\textwidth-7.8cm}
+        \textbf{Выполнил:}\par
+        Степанов Арсений Алексеевич\par
+        \vspace*{0.15cm}
+        \textbf{Группа:}\par
+        P3318\par
+        \vspace*{0.15cm}
+        \textbf{Преподаватель:}\par
+        Тропченко Андрей Александрович\par
+    \end{minipage}
+    \vfill
+    Санкт-Петербург, \the\year{}г.
+\end{titlepage}  
+\section*{Задание}
+Изучение методов физического и логического кодирования. Необходимо:
+\begin{enumerate}
+    \item Сформировать исходное сообщение
+    \item Закодировать одно и то же бинарное сообщение несколькими методами, Manchester обязательно и минимум 3 варианта на выбор
+    \begin{itemize}
+        \item Manchester
+        \item NRZ
+        \item RZ
+        \item AMI
+        \item MLT-3
+        \item NRZI
+        \item PAM-5
+        \item Differential Manchester
+    \end{itemize}
+    \item Для каждого метода необходимо
+    \begin{itemize}
+        \item Нарисовать временную диаграмму сигнала
+        \item Рассчитать частоты (при скорости канала 100 Мбит/с):
+        \begin{itemize}
+            \item верхнюю частоту
+            \item нижнюю частоту
+            \item спектр сигнала
+            \item среднюю частоту
+            \item требуемую полосу пропускания
+        \end{itemize}
+        \item Сделать таблицу сравнения методов
+        \item Выписать плюсы и минусы
+    \end{itemize}
+    \item Выбрать один из методов физического кодирования из предыдущего этапа и:
+    \begin{itemize}
+        \item Применить кодирование 4B/5B
+        \item Записать результат
+        \begin{itemize}
+            \item в binary
+            \item в hex
+        \end{itemize}
+        \item Определить
+        \begin{itemize}
+            \item новую длину сообщения
+            \item избыточность
+        \end{itemize}
+        \item Нарисовать временную диаграмму
+        \item Снова посчитать:
+        \begin{itemize}
+            \item верхнюю частоту
+            \item нижнюю частоту
+            \item среднюю частоту
+            \item полосу пропускания
+        \end{itemize}
+        \item Сравнить с физическим кодированием
+    \end{itemize}
+    \item Скремблирование
+    \begin{itemize}
+        \item Нужно применить scrambler, выбрать один полином:
+        \begin{itemize}
+            \item $B_i = A_i \oplus B_i-3 \oplus B_i-5$
+            \item $B_i = A_i \oplus B_i-5 \oplus B_i-7$
+        \end{itemize}
+        \item Вычислить скремблированную последовательность
+        \item Записать
+        \begin{itemize}
+            \item binary
+            \item hex
+        \end{itemize}
+        \item Нарисовать временную диаграмму
+        \item Снова вычислить
+        \begin{itemize}
+            \item верхнюю частоту
+            \item нижнюю частоту
+            \item среднюю
+            \item полосу пропускания
+        \end{itemize}
+    \end{itemize}
+    \item Сделать итоговый сравнительный анализ
+    \begin{itemize}
+        \item Сформировать таблицу
+        \begin{itemize}
+            \item Метод
+            \item fн
+            \item fв
+            \item средняя
+            \item спектр
+            \item полоса
+        \end{itemize}
+        \item Включить в таблицу
+        \begin{itemize}
+            \item методы из этапа 2
+            \item метод 4B/5B
+            \item метод со скремблером
+        \end{itemize}
+        \item Написать вывод
+        \item Выбрать лучший метод кодирования
+    \end{itemize}
+\end{enumerate}
+\end{document}
