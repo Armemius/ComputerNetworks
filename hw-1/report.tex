@@ -107,8 +107,8 @@ bottom = 2.0cm]{geometry}
     \begin{itemize}
         \item Нужно применить scrambler, выбрать один полином:
         \begin{itemize}
-            \item $B_i = A_i \oplus B_i-3 \oplus B_i-5$
-            \item $B_i = A_i \oplus B_i-5 \oplus B_i-7$
+            \item $B_i = A_i \oplus B_{i-3} \oplus B_{i-5}$
+            \item $B_i = A_i \oplus B_{i-5} \oplus B_{i-7}$
         \end{itemize}
         \item Вычислить скремблированную последовательность
         \item Записать
@@ -314,8 +314,8 @@ $$n_\text{max} = 6$$
 $$n_\text{max} = 4$$
 \begin{itemize}
     \item Верхняя граница частот: $F_\text{в}=\dfrac{C}{2}=50 \text{МГц}$
-    \item Нижняя граница частот: $F_\text{н}=\dfrac{C}{2 \cdot n_\text{max}}=\dfrac{C}{8}= 12 \text{МГц}$
-    \item Середина спектра: $F_{\frac{1}{2}}=\dfrac{F_\text{в} + F_\text{н}}{2}=31 \text{МГц}$
+    \item Нижняя граница частот: $F_\text{н}=\dfrac{C}{2 \cdot n_\text{max}}=\dfrac{C}{8}= 12.5 \text{МГц}$
+    \item Середина спектра: $F_{\frac{1}{2}}=\dfrac{F_\text{в} + F_\text{н}}{2}=31.25 \text{МГц}$
     \item Средняя частота спектра: $F_\text{ср}=\dfrac{11\cdot\frac{F_\text{в}}{1} + 4\cdot\frac{F_\text{в}}{2}+ 1\cdot\frac{F_\text{в}}{3} + 2\cdot\frac{F_\text{в}}{4}}{24}=28.819\text{МГц}$
     \item Ширина спектра: $S = F_\text{в} - F_\text{н} = 38\text{МГц}$
     \item Полоса пропускания: $F=\dfrac{C}{2}=50\text{МГц}$
@@ -324,5 +324,66 @@ $$n_\text{max} = 4$$
     \includegraphics[width=\textwidth]{assets/nrz-4b-5b.png}
 \end{center}
 
+\subsection*{Скремблирование}
+Для скремблирования выберем полином $B_i = A_i \oplus B_{i-5} \oplus B_{i-7}$
+
+$$
+\begin{array}{lllllll}
+    A_{1} = 1 & & B_1 & = & A_1 & = & 1 \\
+    A_{2} = 1 & & B_2 & = & A_2 & = & 1 \\
+    A_{3} = 0 & & B_3 & = & A_3 & = & 0 \\
+    A_{4} = 1 & & B_4 & = & A_4 & = & 1 \\
+    A_{5} = 0 & & B_5 & = & A_5 & = & 0 \\
+    A_{6} = 0 & & B_6 & = & A_6 & = & 1 \\
+    A_{7} = 0 & & B_{7} & = & A_{7} \oplus B_{2} & = & 1 \\
+    A_{8} = 1 & & B_{8} & = & A_{8} \oplus B_{3} & = & 0 \\
+    A_{9} = 1 & & B_{9} & = & A_{9} \oplus B_{4} \oplus B_{2} & = & 1 \\
+    A_{10} = 1 & & B_{10} & = & A_{10} \oplus B_{5} \oplus B_{3} & = & 1 \\
+    A_{11} = 0 & & B_{11} & = & A_{11} \oplus B_{6} \oplus B_{4} & = & 0 \\
+    A_{12} = 0 & & B_{12} & = & A_{12} \oplus B_{7} \oplus B_{5} & = & 1 \\
+    A_{13} = 0 & & B_{13} & = & A_{13} \oplus B_{8} \oplus B_{6} & = & 1 \\
+    A_{14} = 0 & & B_{14} & = & A_{14} \oplus B_{9} \oplus B_{7} & = & 0 \\
+    A_{15} = 0 & & B_{15} & = & A_{15} \oplus B_{10} \oplus B_{8} & = & 1 \\
+    A_{16} = 0 & & B_{16} & = & A_{16} \oplus B_{11} \oplus B_{9} & = & 1 \\
+    A_{17} = 1 & & B_{17} & = & A_{17} \oplus B_{12} \oplus B_{10} & = & 1 \\
+    A_{18} = 1 & & B_{18} & = & A_{18} \oplus B_{13} \oplus B_{11} & = & 0 \\
+    A_{19} = 0 & & B_{19} & = & A_{19} \oplus B_{14} \oplus B_{12} & = & 1 \\
+    A_{20} = 0 & & B_{20} & = & A_{20} \oplus B_{15} \oplus B_{13} & = & 0 \\
+    A_{21} = 0 & & B_{21} & = & A_{21} \oplus B_{16} \oplus B_{14} & = & 1 \\
+    A_{22} = 0 & & B_{22} & = & A_{22} \oplus B_{17} \oplus B_{15} & = & 0 \\
+    A_{23} = 0 & & B_{23} & = & A_{23} \oplus B_{18} \oplus B_{16} & = & 1 \\
+    A_{24} = 0 & & B_{24} & = & A_{24} \oplus B_{19} \oplus B_{17} & = & 0 \\
+\end{array}
+$$
+\begin{itemize}
+    \item Исходное сообщение: \textbf{1101 0001 1100 0000 1100 0000}
+    \item Скремблированное сообщение: \textbf{1101 0110 1101 1011 1010 1010}
+    \item Представление скремблированного сообщения в hex: \textbf{D6 DB AA}
+    \item Длина сообщения: \textbf{3 байта (24 бит)}
+\end{itemize}
+Анализ новой последовательности:
+\begin{center}
+    \textbf{11 | 0 | 1 | 0 | 11 | 0 | 11 | 0 | 11 | 0 | 111 | 0 | 1 | 0 | 1 | 0 | 1 | 0}
+\end{center}
+\begin{center}
+    \begin{tabular}{cc}
+        Длина & Кол-во серий \\
+        1 & 13 \\
+        2 & 4 \\
+        3 & 1
+    \end{tabular}
+\end{center}
+$$n_\text{max} = 3$$
+\begin{itemize}
+    \item Верхняя граница частот: $F_\text{в}=\dfrac{C}{2}=50 \text{МГц}$
+    \item Нижняя граница частот: $F_\text{н}=\dfrac{C}{2 \cdot n_\text{max}}=\dfrac{C}{6}= 16.667 \text{МГц}$
+    \item Середина спектра: $F_{\frac{1}{2}}=\dfrac{F_\text{в} + F_\text{н}}{2}=33.333 \text{МГц}$
+    \item Средняя частота спектра: $F_\text{ср}=\dfrac{13\cdot\frac{F_\text{в}}{1} + 4\cdot\frac{F_\text{в}}{2}+ 1\cdot\frac{F_\text{в}}{3}}{24}=31.944\text{МГц}$
+    \item Ширина спектра: $S = F_\text{в} - F_\text{н} = 33.333\text{МГц}$
+    \item Полоса пропускания: $F=\dfrac{C}{2}=50\text{МГц}$
+\end{itemize}
+\begin{center}
+    \includegraphics[width=\textwidth]{assets/nrz-scrambled.png}
+\end{center}
 
 \end{document}
