@@ -218,4 +218,87 @@ $$n_\text{max} = 6$$
 \begin{center}
     \includegraphics[width=\textwidth]{assets/ami.png}
 \end{center}
+\subsubsection*{Сравнительный анализ}
+\begin{tabular}{|l|c|c|c|c|}
+    \hline
+    \textbf{Метод кодирования} & Манчестерская & NRZ & RZ & AMI \\
+    \hline
+    \textbf{Полоса пропускания} & 100МГц & 50МГц & 100МГц & 50МГц \\
+    \hline
+    \textbf{Самосинхронизация} & Есть & Нет & Есть & Нет \\
+    \hline
+    \textbf{Постоянная составляющая} & Нет & Есть & Нет & Есть \\
+    \hline
+    \textbf{Уровни сигнала} & 2 & 2 & 3 & 3 \\
+    \hline
+    \textbf{Эффективность} & Низкая & Высокая & Низкая & Высокая \\
+    \hline
+\end{tabular}
+\hfill\break
+\textbf{Манчестерское кодирование}
+\begin{itemize}
+    \item Плюсы
+    \begin{itemize}
+        \item Самосинхронизация, даже при длинных последовательностях
+        \item Отсутствует постоянная составляющая
+        \item Лёгкое обнаружение ошибок
+    \end{itemize}
+    \item Минусы
+    \begin{itemize}
+        \item Требует большей полосы пропускания
+        \item Меньшая скорость
+    \end{itemize}
+\end{itemize}
+\textbf{NRZ кодирование}
+\begin{itemize}
+    \item Плюсы
+    \begin{itemize}
+        \item Простота реализации
+        \item Эффективность использования полосы
+    \end{itemize}
+    \item Минусы
+    \begin{itemize}
+        \item Проблема с синхронизацией
+        \item Нет механизмов обнаружения ошибок
+    \end{itemize}
+\end{itemize}
+\textbf{RZ кодирование}
+\begin{itemize}
+    \item Плюсы
+    \begin{itemize}
+        \item Синхронизация лучше чем в NRZ
+    \end{itemize}
+    \item Минусы
+    \begin{itemize}
+        \item Сложность реализации
+        \item Требует в 2 раза больше полосы относительно NRZ
+        \item Малая эффективность
+    \end{itemize}
+\end{itemize}
+\textbf{AMI кодирование}
+\begin{itemize}
+    \item Плюсы
+    \begin{itemize}
+        \item Отсутствует постоянная составляющая
+        \item Обнаружение ошибок
+        \item Эффективность
+    \end{itemize}
+    \item Минусы
+    \begin{itemize}
+        \item Потеря синхронизации при длительной последовательности нулей
+        \item Необходимость в скремблировании
+    \end{itemize}
+\end{itemize}
+
 \end{document}
+
+\begin{itemize}
+    \item Плюсы
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item Минусы
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{itemize}
