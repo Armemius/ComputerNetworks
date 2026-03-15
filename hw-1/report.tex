@@ -166,4 +166,33 @@ bottom = 2.0cm]{geometry}
 \begin{center}
     \includegraphics[width=\textwidth]{assets/manchester.png}
 \end{center}
+\subsubsection*{Кодирование методом NRZ}
+Анализ последовательности:
+\begin{center}
+    \textbf{11 | 0 | 1 | 000 | 111 | 000000 | 11 | 000000}
+\end{center}
+\begin{center}
+    \begin{tabular}{cc}
+        Длина & Кол-во серий \\
+        1 & 2 \\
+        2 & 2 \\
+        3 & 2 \\
+        6 & 2
+    \end{tabular}
+\end{center}
+$$n_\text{max} = 6$$
+
+
+\begin{itemize}
+    \item Верхняя граница частот: $F_\text{в}=\dfrac{C}{2}=50 \text{МГц}$
+    \item Нижняя граница частот: $F_\text{н}=\dfrac{C}{2 \cdot n_\text{max}}=\dfrac{C}{12}= 8.333 \text{МГц}$
+    \item Середина спектра: $F_{\frac{1}{2}}=\dfrac{F_\text{в} + F_\text{н}}{2}=29.166 \text{МГц}$
+    \item Средняя частота спектра: $F_\text{ср}=\dfrac{2\cdot\frac{F_\text{в}}{1} + 4\cdot\frac{F_\text{в}}{2}+ 6\cdot\frac{F_\text{в}}{3} + 12\cdot\frac{F_\text{в}}{6}}{24}=16.667\text{МГц}$
+    \item Ширина спектра: $S = F_\text{в} - F_\text{н} = 41.667\text{МГц}$
+    \item Полоса пропускания: $F=\dfrac{C}{2}=50\text{МГц}$
+\end{itemize}
+\begin{center}
+    \includegraphics[width=\textwidth]{assets/nrz.png}
+\end{center}
+
 \end{document}
