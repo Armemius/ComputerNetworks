@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{graphicx, setspace}
+\usepackage{amsmath}
 
 \usepackage[
 top = 1.25cm, 
@@ -129,8 +130,8 @@ bottom = 2.0cm]{geometry}
         \item Сформировать таблицу
         \begin{itemize}
             \item Метод
-            \item fн
-            \item fв
+            \item $F_\text{н}$
+            \item $F_\text{в}$
             \item средняя
             \item спектр
             \item полоса
@@ -145,4 +146,24 @@ bottom = 2.0cm]{geometry}
         \item Выбрать лучший метод кодирования
     \end{itemize}
 \end{enumerate}
+\newpage
+\section*{Выполнение}
+\subsection*{Формирование сообщения}
+\begin{itemize}
+    \item Исходное сообщение: \textbf{САА}
+    \item Представление в hex: \textbf{D1 C0 C0}
+    \item Преставление в bin: \textbf{1101 0001 1100 0000 1100 0000}
+    \item Длина сообщения: \textbf{3 байта (24 бит)}
+\end{itemize}
+\subsection*{Физическое кодирование исходного сообщения}
+\subsubsection*{Манчестерское кодирование}
+\begin{itemize}
+    \item Верхняя граница частот: $F_\text{в}=C=100 \text{МГц}$
+    \item Нижняя граница частот: $F_\text{н}=\dfrac{C}{2}= 50 \text{МГц}$
+    \item Середина спектра: $F_{\frac{1}{2}}=\dfrac{F_\text{в} + F_\text{н}}{2}=75 \text{МГц}$
+    \item Ширина спектра: $S = F_\text{в} - F_\text{н} = 50\text{МГц}$
+\end{itemize}
+\begin{center}
+    \includegraphics[width=\textwidth]{assets/manchester.png}
+\end{center}
 \end{document}
